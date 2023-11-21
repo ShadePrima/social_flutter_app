@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_flutter_app/components/my_button.dart';
 import 'package:social_flutter_app/components/my_textfield.dart';
 
 class LoginPage extends StatelessWidget {
@@ -49,16 +50,35 @@ class LoginPage extends StatelessWidget {
             //password textfield
             MyTextField(
                 hintText: 'Password',
-                obscureText: false,
+                obscureText: true,
                 controller: passwordControler),
 
             const SizedBox(
-              height: 25,
+              height: 10,
             ),
 
             //forgot password
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "Forgot Password",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
 
             //sign in button
+            MyButton(
+              text: 'Login',
+              onTap: () {},
+            )
 
             //don't have an account? Register here
           ],

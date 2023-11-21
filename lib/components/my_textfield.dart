@@ -21,7 +21,7 @@ class MyTextField extends StatelessWidget {
         ),
         hintText: hintText,
       ),
-      obscureText: true,
+      obscureText: obscureText,
     );
   }
 }
