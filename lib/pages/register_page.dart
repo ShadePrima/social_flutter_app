@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:social_flutter_app/components/my_button.dart';
 import 'package:social_flutter_app/components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final void Function()? onTap;
 
-  LoginPage({super.key, required this.onTap});
+  RegisterPage({super.key, required this.onTap});
 
   //text controllers
+  final TextEditingController usernameControler = TextEditingController();
   final TextEditingController emailControler = TextEditingController();
   final TextEditingController passwordControler = TextEditingController();
+  final TextEditingController confirmPdControler = TextEditingController();
 
   //login methods
   void login() {}
@@ -42,6 +44,16 @@ class LoginPage extends StatelessWidget {
               height: 50,
             ),
 
+            //username textfield
+            MyTextField(
+                hintText: 'Username',
+                obscureText: false,
+                controller: usernameControler),
+
+            const SizedBox(
+              height: 10,
+            ),
+
             //email textfield
             MyTextField(
                 hintText: 'Email',
@@ -57,6 +69,16 @@ class LoginPage extends StatelessWidget {
                 hintText: 'Password',
                 obscureText: true,
                 controller: passwordControler),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            //confirm password
+            MyTextField(
+                hintText: 'Confirm Password',
+                obscureText: true,
+                controller: confirmPdControler),
 
             const SizedBox(
               height: 10,
@@ -81,7 +103,7 @@ class LoginPage extends StatelessWidget {
 
             //sign in button
             MyButton(
-              text: 'Login',
+              text: 'Register',
               onTap: login,
             ),
 
@@ -93,14 +115,14 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account"),
+                const Text("Already have an account?"),
                 const SizedBox(
                   width: 5,
                 ),
                 GestureDetector(
                   onTap: onTap,
                   child: const Text(
-                    "Register here",
+                    "Login here",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 )
