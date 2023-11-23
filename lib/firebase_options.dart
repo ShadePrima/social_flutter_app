@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,6 +43,16 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA2RxZavy1ZY9fpaufUbBZmY1xx311lbBE',
+    appId: '1:370624456093:web:f798a0dfb41af179337b74',
+    messagingSenderId: '370624456093',
+    projectId: 'social-flutter-app-42337',
+    authDomain: 'social-flutter-app-42337.firebaseapp.com',
+    storageBucket: 'social-flutter-app-42337.appspot.com',
+    measurementId: 'G-J972HCNE8D',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCf5sgHT_Qbie2eDwiARR-1wlTBvtQQJYs',
     appId: '1:370624456093:android:81125b291016cb94337b74',
@@ -64,5 +68,14 @@ class DefaultFirebaseOptions {
     projectId: 'social-flutter-app-42337',
     storageBucket: 'social-flutter-app-42337.appspot.com',
     iosBundleId: 'com.example.socialFlutterApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDL9Vk-cc-XW79LnLQ8oJcl7QwaDM5tOfg',
+    appId: '1:370624456093:ios:9b187c56132477a4337b74',
+    messagingSenderId: '370624456093',
+    projectId: 'social-flutter-app-42337',
+    storageBucket: 'social-flutter-app-42337.appspot.com',
+    iosBundleId: 'com.example.socialFlutterApp.RunnerTests',
   );
 }
