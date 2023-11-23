@@ -42,9 +42,9 @@ class _LoginPageState extends State<LoginPage> {
 
     on FirebaseAuthException catch (e) {
       //pop loading circle
-      Navigator.pop(context);
+      if (context.mounted) Navigator.pop(context);
 
-      displayMessageToUser(e.code, context);
+      if (context.mounted) displayMessageToUser(e.code, context);
     }
   }
 

@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_flutter_app/components/my_button.dart';
 import 'package:social_flutter_app/components/my_textfield.dart';
-
 import '../helper/helper_function.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -41,24 +41,39 @@ class _RegisterPageState extends State<RegisterPage> {
     }
     //if passwords do match
     else {
+      //try create the user
       try {
         //create the user
         UserCredential? userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: emailControler.text, password: passwordControler.text);
 
+        //create a user document and add to firestore
+        createUserDocument(userCredential);
+
         //pop loading circle
-        Navigator.pop(context);
+        if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         //pop loading circle
-        Navigator.pop(context);
+        if (context.mounted) Navigator.pop(context);
 
         //display error message  to user
-        displayMessageToUser(e.code, context);
+        if (context.mounted) displayMessageToUser(e.code, context);
       }
     }
+  }
 
-    //try creating the user
+  //create a user document and collect themm in firestore
+  Future<void> createUserDocument(UserCredential? userCredential) async {
+    if (userCredential != null && userCredential.user != null) {
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(userCredential.user!.email)
+          .set({
+        'email': userCredential.user!.email,
+        'username': usernameControler.text,
+      });
+    }
   }
 
   @override
