@@ -50,9 +50,12 @@ class UserPage extends StatelessWidget {
                 ),
               ),
 
+              //list of users in the app
+
               Expanded(
                 child: ListView.builder(
                   itemCount: users.length,
+                  padding: const EdgeInsets.all(20),
                   itemBuilder: (context, index) {
                     //get individual user
                     final user = users[index];
