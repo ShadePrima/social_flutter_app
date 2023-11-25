@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_flutter_app/components/my_drawer.dart';
 import 'package:social_flutter_app/components/my_list_tile.dart';
@@ -96,7 +95,7 @@ class HomePage extends StatelessWidget {
                 //get data from each post
                 String message = post['PostMessage'];
                 String userEmail = post['UserEmail'];
-                Timestamp timestamp = post['TimeStamp'];
+                // Timestamp timestamp = post['TimeStamp'];
 
                 //return as a list tile
                 return MyListTile(
