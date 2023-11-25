@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:social_flutter_app/components/my_drawer.dart';
+import 'package:social_flutter_app/components/my_list_tile.dart';
 import 'package:social_flutter_app/components/my_post_button.dart';
 import 'package:social_flutter_app/components/my_textfield.dart';
 import 'package:social_flutter_app/database/firestore.dart';
@@ -98,9 +99,9 @@ class HomePage extends StatelessWidget {
                 Timestamp timestamp = post['TimeStamp'];
 
                 //return as a list tile
-                return ListTile(
-                  title: Text(message),
-                  subtitle: Text(userEmail),
+                return MyListTile(
+                  title: message,
+                  subTitle: userEmail,
                 );
               },
             ));

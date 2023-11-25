@@ -60,9 +60,22 @@ class UserPage extends StatelessWidget {
                     //get individual user
                     final user = users[index];
 
-                    return ListTile(
-                      title: Text(user['username']),
-                      subtitle: Text(user['email']),
+                    //get data from  each user
+                    String username = user['username'];
+                    String useremail = user['email'];
+
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15, right: 15, bottom: 15),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: ListTile(
+                          title: Text(username),
+                          subtitle: Text(useremail),
+                        ),
+                      ),
                     );
                   },
                 ),
